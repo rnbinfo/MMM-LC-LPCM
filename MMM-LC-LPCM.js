@@ -54,20 +54,6 @@ Module.register("MMM-LC-LPCM", {
 	},
 
 	getDom: function() {
-		var self = this;
-
-		// create element wrapper for show into the module
-		var wrapper = document.createElement("div");
-
-		// Data from helper
-		if (this.dataNotification) {
-			var wrapperDataNotification = document.createElement("div");
-			// translations  + datanotification
-			wrapperDataNotification.innerHTML =  this.dataNotification;
-
-			wrapper.appendChild(wrapperDataNotification);
-		}
-		return wrapper;
 	},
 
 	getScripts: function() {
@@ -76,7 +62,6 @@ Module.register("MMM-LC-LPCM", {
 
 	getStyles: function () {
 		return [
-			"hello.css",
 		];
 	},
 
@@ -84,8 +69,6 @@ Module.register("MMM-LC-LPCM", {
 	getTranslations: function() {
 		//FIXME: This can be load a one file javascript definition
 		return {
-			en: "translations/en.json",
-			es: "translations/es.json"
 		};
 	},
 
@@ -95,8 +78,6 @@ Module.register("MMM-LC-LPCM", {
 
 		if(notification === "stop-record") {
 			// set dataNotification
-			this.dataNotification = "stop-record";
-			this.updateDom();
 			this.sendNotification("stop-record");
 			isRecording = false;
 		}
@@ -114,8 +95,6 @@ Module.register("MMM-LC-LPCM", {
 		if( notification === "start-record") {
 			if(!isRecording){
 				isRecording = true;
-				this.dataNotification = "start-record";
-				this.updateDom();
 				this.sendSocketNotification("start-record", null);
 				time = 0;
 			}
@@ -124,8 +103,6 @@ Module.register("MMM-LC-LPCM", {
 		if(notification === "CLOCK_SECOND"){
 
 			time++;
-			console.log(time);
-			console.log(isRecording);
 			if(time >=20 && isRecording ){
 				this.sendSocketNotification("kill-record",null);
 				time = 0;
