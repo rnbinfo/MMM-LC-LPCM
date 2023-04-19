@@ -1,0 +1,12 @@
+{
+	"name": "MMM-LC-LPCM",
+	"version": "1.0.0",
+	"description": "Todo: Insert description here!",
+	"main": "hello.js",
+	"author": "pudfi",
+	"license": "MIT",
+	"dependencies": {
+		"fs": "^0.0.1-security",
+		"node-record-lpcm16": "^1.0.1"
+	}
+}
