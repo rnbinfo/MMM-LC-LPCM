@@ -41,7 +41,7 @@ module.exports = NodeHelper.create({
 			device: "plughw:3",
 			sampleRate: 48000,
 			channels: 1,
-			threshold: 5,
+			threshold: 10,
 			silence: '2.0',
 			endOnSilence: true
 		})
